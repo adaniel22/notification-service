@@ -23,7 +23,7 @@ class ListenOrderCreated extends Command
         $client = new Client($configuration);
 
         // FIGYELEM: a NestJS a pontot alulvonásra cseréli → 'order_created'
-        $client->subscribe('order_created', function ($message) {
+        $client->subscribe('order.created', function ($message) {
             $envelope = json_decode($message->body, true);
 
             // A NestJS egy { pattern, data } borítékba csomagol — a mi adatunk a 'data'-ban van
